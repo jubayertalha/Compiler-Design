@@ -1,0 +1,1 @@
+#include <iostream>#include <string>using namespace std;int main(){	char fname[256], lname[256];	string fullname;	cout<<"Enter First Name: ";	gets(fname);	cout<<"Enter Last Name: ";	gets(lname);	fullname.append(fname);	fullname.append(" ");	fullname.append(lname);	cout<<"Full Name: "<<fullname<<endl;	return 0;}

@@ -1,0 +1,1 @@
+#include <iostream>using namespace std;int factorial(int n){	int fac = 1;	if(n<0) return 0;	for(int i=2; i<=n; i++) fac *= i;	return fac;}int main(){	int n, fac;	cout<<"Enter the number: ";	cin>>n;	fac = factorial(n);	if(fac==0) cout<<"Can't operate negative number"<<endl;	else cout<<"The factorial is: "<<fac<<endl;	return 0;}
