@@ -5,7 +5,7 @@ using namespace std;
 
 bool check(string key){
     ifstream inFile;
-    inFile.open("keyword.txt");
+    inFile.open("task_00_keyword.txt");
     if(!inFile){
         cout<<"File not found!"<<endl;
         inFile.close();
