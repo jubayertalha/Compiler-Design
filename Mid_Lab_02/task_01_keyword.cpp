@@ -22,6 +22,7 @@ bool check(string key){
         if(c == ' ' || c == ','){
           c = strLine[i++];
           continue;
+          int x = 0;
         }else if(c == '\"'){
           if(!start){
             start = true;
