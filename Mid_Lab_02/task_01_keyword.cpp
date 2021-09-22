@@ -14,12 +14,15 @@ bool check(string key){
     string strLine;
     string words[1000];
     int totalWord = 0;
-    while(getline(inFile,strLine)){      int i = 0;
+    while(getline(inFile,strLine)){
+      int i = 0;
       char c = strLine[i++];
       bool start = false;
       while(c!='\0'){
-        if(c == ' ' || c == ','){          c = strLine[i++];
+        if(c == ' ' || c == ','){
+          c = strLine[i++];
           continue;
+          int x = 0;
         }else if(c == '\"'){
           if(!start){
             start = true;
@@ -29,16 +32,29 @@ bool check(string key){
           }
         }else{
           words[totalWord]+=c;
-        }        c = strLine[i++];
+        }
+        c = strLine[i++];
       }
-    }    bool match = false;
-    for(int i=0;i<=totalWord;i++){
-      if(words[i] == key){        match = true;        break;      }
     }
-    inFile.close();    return match;
+    bool match = false;
+    for(int i=0;i<=totalWord;i++){
+      if(words[i] == key){
+        match = true;
+        break;
+      }
+    }
+    inFile.close();
+    return match;
 }
 
-int main(){    string key;
-    cout<<"Enter a keyword: ";    cin>>key;	if(check(key)){        cout<<"The keyword \""<<key<<"\" is valid!"<<endl;	}else{        cout<<"The keyword \""<<key<<"\" is invalid!"<<endl;	}
+int main(){
+    string key;
+    cout<<"Enter a keyword: ";
+    cin>>key;
+	if(check(key)){
+        cout<<"The keyword \""<<key<<"\" is valid!"<<endl;
+	}else{
+        cout<<"The keyword \""<<key<<"\" is invalid!"<<endl;
+	}
 	return 0;
-}
+}
