@@ -1,0 +1,22 @@
+/*this is a simple program
+    using c++
+    //is used for single line comment*/
+
+//start of program
+#include<iostream> //include header file
+using namespace std; //use of standard namespace
+
+/*declare of evenodd function
+takes n as integer in argument
+return the result in string*/
+
+string evenodd(int n){
+    if(n%2==0) return "Even"; //return "Even" if the condition is true
+    else return "Odd"; //return "Odd" if the condition is false
+}
+
+int main(){ //declare of main function
+    int x = 10/2; //devide 10 by 2 then store into x
+    cout<<check(40)<<endl; //print returned value
+    return 0; //return 0
+}
