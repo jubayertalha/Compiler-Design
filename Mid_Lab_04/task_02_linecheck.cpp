@@ -4,10 +4,8 @@ using namespace std;
 int main(){
     string line;
     getline(cin,line);
-
     bool isValid = true;
     int total = 0;
-
     string word;
     istringstream ss(line);
     while(ss>>word){
@@ -22,19 +20,42 @@ int main(){
                         break;
                     }
                 }else{
-                    if((ch>='a'&&ch<='z')||'.'){
+                    if(ch>='a'&&ch<='z'){
                         continue;
+                    }else if(i==word.length()-1){
+                        if(ch=='.'){
+                            continue;
+                        }else{
+                            isValid = false;
+                            break;
+                        }
                     }else{
                         isValid = false;
                         break;
                     }
                 }
             }else{
-                if((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')||'.'){
-                    continue;
+                if(i==0){
+                    if((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')){
+                        continue;
+                    }else{
+                        isValid = false;
+                        break;
+                    }
                 }else{
-                    isValid = false;
-                    break;
+                    if((ch>='a'&&ch<='z')){
+                        continue;
+                    }else if(i==word.length()-1){
+                        if(ch=='.'){
+                            continue;
+                        }else{
+                            isValid = false;
+                            break;
+                        }
+                    }else{
+                        isValid = false;
+                        break;
+                    }
                 }
             }
         }
@@ -43,7 +64,6 @@ int main(){
     if(word[word.length()-1]!='.'){
         isValid = false;
     }
-    
     if(isValid){
         cout<<"Valid Statement"<<endl;
     }else{
