@@ -1,25 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void pattern1(){
+void pattern1(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
-    if(str == "abc"){
+    if(str == ptrn){
         cout<<"Valid string"<<endl;
         return;
     }
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern2(){
+void pattern2(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
     if(str.length()>=2){
-        if(str[0]=='a'&&str[1]=='b'){
+        if(str[0]==ptrn[0]&&str[1]==ptrn[1]){
             for(int i=2;i<str.length();i++){
-                if(str[i]!='c'){
+                if(str[i]!=ptrn[2]){
                     cout<<"Not a valid string."<<endl;
                     return;
                 }
@@ -31,14 +31,14 @@ void pattern2(){
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern3(){
+void pattern3(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
     if(str.length()>=3){
-        if(str[0]=='a'&&str[1]=='b'&&str[2]=='c'){
+        if(str[0]==ptrn[0]&&str[1]==ptrn[1]&&str[2]==ptrn[2]){
             for(int i=3;i<str.length();i++){
-                if(str[i]!='c'){
+                if(str[i]!=ptrn[2]){
                     cout<<"Not a valid string."<<endl;
                     return;
                 }
@@ -50,14 +50,14 @@ void pattern3(){
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern4(){
+void pattern4(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
     if(str.length()>=3 && (str.length()%2)==1){
-        if(str[0]=='a'&&str[1]=='b'&&str[2]=='c'){
+        if(str[0]==ptrn[0]&&str[1]==ptrn[2]&&str[2]==ptrn[3]){
             for(int i=3;i<str.length();i+=2){
-                if(str[i]!='b' || str[i+1]!='c'){
+                if(str[i]!=ptrn[2] || str[i+1]!=ptrn[3]){
                     cout<<"Not a valid string."<<endl;
                     return;
                 }
@@ -69,17 +69,17 @@ void pattern4(){
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern5(){
+void pattern5(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
     if(str.length()==3){
-        if(str[0]=='a'&&str[1]=='b'&&str[2]=='c'){
+        if(str[0]==ptrn[0]&&str[1]==ptrn[2]&&str[2]==ptrn[3]){
             cout<<"Valid string"<<endl;
             return;
         }
     }else if(str.length()==1){
-        if(str[0]=='a'){
+        if(str[0]==ptrn[0]){
             cout<<"Valid string"<<endl;
             return;
         }
@@ -87,37 +87,109 @@ void pattern5(){
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern6(){
+void pattern6(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
-    if(str.length()==1 && (str[0]!='a'&&str[0]!='b')){
+    if(str.length()==1 && (str[0]!=ptrn[2]&&str[0]!=ptrn[3])){
         cout<<"Valid string."<<endl;
         return;
     }
     cout<<"Not a valid string."<<endl;
 }
 
-void pattern7(){
+void pattern7(string ptrn){
     cout<<"Enter a string: ";
     string str;
     cin>>str;
-    if(str.length()==1 && (str[0]=='a'||str[0]=='b')){
+    if(str.length()==1 && (str[0]==ptrn[0]||str[0]==ptrn[2])){
         cout<<"Valid string."<<endl;
         return;
     }
     cout<<"Not a valid string."<<endl;
 }
 
-int matchPattern(string str){
-    if(str == "abc") return 1;
-    else if(str == "abc*") return 2;
-    else if(str == "abc+") return 3;
-    else if(str == "a(bc)+") return 4;
-    else if(str == "a(bc)?") return 5;
-    else if(str == "[^ab]") return 6;
-    else if(str == "a|b") return 7;
-    else return 0;
+void matchPattern(string str){
+    if(str.length()==3){
+        bool matched = true;
+        for(int i=0;i<str.length();i++){
+            if(!(str[i]>='a'&&str[i]<='z')){
+                matched = false;
+                break;
+            }
+        }
+        if(matched){
+            pattern1(str);
+            return;
+        }
+    }
+    if(str.length()==4 && str[3]=='*'){
+        bool matched = true;
+        for(int i=0;i<str.length()-1;i++){
+            if(!(str[i]>='a'&&str[i]<='z')){
+                matched = false;
+                break;
+            }
+        }
+        if(matched){
+            pattern2(str);
+            return;
+        }
+    }
+    if(str.length()==4 && str[3]=='+'){
+        bool matched = true;
+        for(int i=0;i<str.length()-1;i++){
+            if(!(str[i]>='a'&&str[i]<='z')){
+                matched = false;
+                break;
+            }
+        }
+        if(matched){
+            pattern3(str);
+            return;
+        }
+    }
+    if(str.length()==6 && str[1]=='(' && str[4]==')' && str[5]=='+'){
+        bool matched = true;
+        if(!(str[0]>='a'&&str[0]<='z')&&!(str[2]>='a'&&str[2]<='z')&&!(str[3]>='a'&&str[3]<='z')){
+            matched = false;
+        }
+        if(matched){
+            pattern4(str);
+            return;
+        }
+    }
+    if(str.length()==6 && str[1]=='(' && str[4]==')' && str[5]=='?'){
+        bool matched = true;
+        if(!(str[0]>='a'&&str[0]<='z')&&!(str[2]>='a'&&str[2]<='z')&&!(str[3]>='a'&&str[3]<='z')){
+            matched = false;
+        }
+        if(matched){
+            pattern5(str);
+            return;
+        }
+    }
+    if(str.length()==5 && str[0]=='[' && str[1]=='^' && str[4]==']'){
+        bool matched = true;
+        if(!(str[2]>='a'&&str[2]<='z')&&!(str[3]>='a'&&str[3]<='z')){
+            matched = false;
+        }
+        if(matched){
+            pattern6(str);
+            return;
+        }
+    }
+    if(str.length()==3 && str[1]=='|'){
+        bool matched = true;
+        if(!(str[0]>='a'&&str[0]<='z')&&!(str[2]>='a'&&str[2]<='z')){
+            matched = false;
+        }
+        if(matched){
+            pattern7(str);
+            return;
+        }
+    }
+    cout<<"Enter a valid pattern."<<endl;
 }
 
 int main(){
@@ -125,32 +197,7 @@ int main(){
         cout<<"Enter Pattern: ";
         string str;
         cin>>str;
-        int p = matchPattern(str);
-        switch(p){
-            case 1:
-                pattern1();
-                break;
-            case 2:
-                pattern2();
-                break;
-            case 3:
-                pattern3();
-                break;
-            case 4:
-                pattern4();
-                break;
-            case 5:
-                pattern5();
-                break;
-            case 6:
-                pattern6();
-                break;
-            case 7:
-                pattern7();
-                break;
-            default:
-                cout<<"Enter a valid pattern."<<endl;
-        }
+        matchPattern(str);
         cout<<endl;
     }
 	return 0;
