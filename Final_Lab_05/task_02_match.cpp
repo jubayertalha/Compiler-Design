@@ -94,7 +94,6 @@ string returnRule(char Nterminal, char terminal){
 void match(){
     char ter = topI();
     char nter = topT();
-    cout<<nter<<" "<<ter<<endl;
     if(ter=='$'&&nter=='$'){
         cout<<"Matched";
         return;
