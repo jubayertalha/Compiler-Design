@@ -15,7 +15,6 @@ string findFollow(Rule rules[],int n,char parent,char currentP,string follow);
 string getUniqueChar(string str);
 void constructTable(Rule rules[],int n);
 string findFirstTable(Rule rules[],int n,char parent);
-string reverse(string str);
 void match();
 string getAction(char chnT,char chT);
 
@@ -223,14 +222,6 @@ string getAction(char chnT,char chT){
 	}
 	if(npos!=-1&&tpos!=-1) return table[npos][tpos];
 	return "";
-}
-
-string reverse(string str){
-	string rev = "";
-	for(int i=str.length()-1;i>=0;i--){
-		rev += str[i];
-	}
-	return rev;
 }
 
 string findFirstTable(Rule rules[],int n,char parent){
