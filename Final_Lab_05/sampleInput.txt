@@ -1,0 +1,63 @@
+S = ACB | Cbb | Ba
+A = da | BC
+B = g | e
+C = h | e
+
+S = ABCDF
+A = a | e
+B = b | e
+C = c
+D = d | e
+F = f | e
+
+E = TX
+X = aT X | e
+T = F Y
+Y = bF Y | e
+F = cEd | f
+
+S = aBDh
+B = cC
+C = bC | e
+D = EF
+E = g | e
+F = f | e
+
+S = ACB | CbB | Ba
+A = da | BC
+B = g | e
+C = h | e
+
+S = AaAb | BbBa
+A = e
+B = e
+
+S = cLd | a
+L = SX
+X = bSX | e
+
+S = A
+A = aBX
+X = dX | e
+B = b
+C = g
+
+E = TX
+X = xE | e
+T = FY
+Y = T | e
+F = PZ
+Z = yZ | e
+P = wEz | a | b | c
+
+E = TR
+R = aE | e
+T = FS
+S = bT | e
+F = n | cEd
+
+E = TX
+X = aTX | e
+T = FY
+Y = bFY | e
+F = cEd | f
