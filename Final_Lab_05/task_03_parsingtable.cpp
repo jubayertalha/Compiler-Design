@@ -249,7 +249,6 @@ string findFirstTable(Rule rules[],int n,char parent){
 				}
 				first+=terminal;
 				first+=' ';
-				cout<<first<<endl;
 			}
 		}
 	}
