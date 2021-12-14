@@ -115,7 +115,7 @@ void constructTable(Rule rules[],int n){
 				f++;
 				if(r==f){
 					string selected = getUniqueChar(ifirst);
-					if(selected[0]=='e'){
+					if(ifirst[ifirst.length()-1]=='e'){
 						string follow = rules[i].follow;
 						for(int j=0;j<follow.length();j++){
 							for(int k=0;k<noT;k++){
@@ -124,11 +124,12 @@ void constructTable(Rule rules[],int n){
 								}
 							}
 						}
-					}else{
+					}
+					if(selected[0]!='e'){
 						for(int j=0;j<selected.length();j++){
 							for(int k=0;k<noT;k++){
 								if(terminals[k]==selected[j]){
-									table[i][k] = rule;
+									table[i][k] = rule;  
 								}
 							}
 						}
@@ -137,7 +138,7 @@ void constructTable(Rule rules[],int n){
 			}
 		}
 	}
-	cout<<"NT/T\t|\t";
+	cout<<"NT/T\t|\t";  
 	for(int i=0;i<noT;i++){
 		cout<<terminals[i]<<"\t|\t";
 	}
@@ -150,7 +151,7 @@ void constructTable(Rule rules[],int n){
 		cout<<endl<<endl;
 	}
 	cout<<endl;
-	cout<<"Enter String: ";
+	cout<<"Enter String: "; 
 	string en;
 	getline(cin,en);
 	input = en+"$";
@@ -248,6 +249,7 @@ string findFirstTable(Rule rules[],int n,char parent){
 				}
 				first+=terminal;
 				first+=' ';
+				cout<<first<<endl;
 			}
 		}
 	}

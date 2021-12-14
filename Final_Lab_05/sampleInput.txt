@@ -1,4 +1,4 @@
-S = ACB | Cbb | Ba
+S = ACB | CbB | Ba
 A = da | BC
 B = g | e
 C = h | e
